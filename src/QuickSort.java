@@ -1,3 +1,5 @@
+import java.util.Random;
+
 
 public class QuickSort {
 	int[]array; 
@@ -27,6 +29,14 @@ public class QuickSort {
 		}
 		return array;
 	}
+	public int[]quicksort3(int p, int q){
+		if (p<q){
+			int pivotPosition = partitionRandom(p,q);
+			quickSort1(p, pivotPosition-1);
+			quickSort1(pivotPosition+1, q);
+		}
+		return array;
+	}
 	private int partition(int first, int last) {
 		int pivot = array[first];
 		int tb = first+1;
@@ -51,5 +61,21 @@ public class QuickSort {
 		array[first] = array[ts];
 		array[ts] = pivot;
 		return ts;
+	}
+	private int partitionRandom(int first, int last){
+		/*
+		 * if ((q-p+1)³16) then
+		 * swap a[p] and a[p + Random() mod (q-p+1)];
+		 */
+		if ((last -first +1) >= 16){
+			Random r = new Random(); 
+			int temp = array[first];
+			int rand = Math.abs(r.nextInt());
+			int val = (last -first +1);  
+			array[first] = array[first + (Math.abs(r.nextInt())%(last -first +1))];
+			array[first + (Math.abs(r.nextInt())%(last -first +1))] = temp; 
+		}
+		return partition(first, last);
+		
 	}
 }

@@ -22,7 +22,7 @@ public class Test {
 		printArray(temp);
 		System.out.println();
 		QuickSort qs = new QuickSort(temp);
-		temp = qs.quickSort2(0, temp.length-1);
+		temp = qs.quicksort3(0, temp.length-1);
 		printArray(temp);
 	}
 	public static void printArray(int[]t){
