@@ -20,7 +20,7 @@ public class QuickSort {
 		 * note I had to add one because the size of the array is q + 1 because 
 		 */
 		if (q - p+1 <=16){
-			System.out.println("IS");
+		//	System.out.println("IS");
 			InsertionSort is = new InsertionSort(array);
 			array = is.insertionSort();
 		}
@@ -29,7 +29,7 @@ public class QuickSort {
 		}
 		return array;
 	}
-	public int[]quicksort3(int p, int q){
+	public int[]quickSort3(int p, int q){
 		if (p<q){
 			int pivotPosition = partitionRandom(p,q);
 			quickSort1(p, pivotPosition-1);
@@ -64,7 +64,7 @@ public class QuickSort {
 	}
 	private int partitionRandom(int first, int last){
 		/*
-		 * if ((q-p+1)³16) then
+		 * if ((q-p+1) >=16) then
 		 * swap a[p] and a[p + Random() mod (q-p+1)];
 		 */
 		if ((last -first +1) >= 16){
