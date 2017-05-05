@@ -7,7 +7,10 @@ public class QuickSort {
 		super(); 
 		this.array=a; 
 	}
-	public int[] quickSort1(int p, int q){
+	public int [] qs1(){
+		return quickSort1(0, array.length-1);
+	}
+	private int[] quickSort1(int p, int q){
 		if (p<q){
 			int pivotPosition = partition(p,q);
 			quickSort1(p, pivotPosition-1);
@@ -15,12 +18,15 @@ public class QuickSort {
 		}
 		return array;
 	}
-	public int[]quickSort2(int p, int q){
+	public int [] qs2(){
+		return quickSort2(0, array.length-1);
+	}
+	private int[]quickSort2(int p, int q){
 		/*
 		 * note I had to add one because the size of the array is q + 1 because 
 		 */
-		if (q - p+1 <=16){
-		//	System.out.println("IS");
+		if (array.length<=16){
+			//	System.out.println("IS");
 			InsertionSort is = new InsertionSort(array);
 			array = is.insertionSort();
 		}
@@ -29,11 +35,25 @@ public class QuickSort {
 		}
 		return array;
 	}
-	public int[]quickSort3(int p, int q){
-		if (p<q){
-			int pivotPosition = partitionRandom(p,q);
-			quickSort1(p, pivotPosition-1);
-			quickSort1(pivotPosition+1, q);
+	public int [] qs3(){
+		return quickSort3(0, array.length-1);
+	}
+	private int[]quickSort3(int p, int q){
+		if (array.length <= 16) {
+			InsertionSort is = new InsertionSort(array);
+			array = is.insertionSort();
+
+		} else {
+
+			if (p < q) {
+				int pivot = partitionRandom( p, q);
+
+				if (pivot > 1)
+					quickSort3(p, pivot - 1);
+
+				if (pivot + 1 < q)
+					quickSort3( pivot + 1, q);
+			}
 		}
 		return array;
 	}
@@ -63,19 +83,23 @@ public class QuickSort {
 		return ts;
 	}
 	private int partitionRandom(int first, int last){
-		/*
-		 * if ((q-p+1) >=16) then
-		 * swap a[p] and a[p + Random() mod (q-p+1)];
-		 */
-		if ((last -first +1) >= 16){
-			Random r = new Random(); 
-			int temp = array[first];
-			int rand = Math.abs(r.nextInt());
-			int val = (last -first +1);  
-			array[first] = array[first + (Math.abs(r.nextInt())%(last -first +1))];
-			array[first + (Math.abs(r.nextInt())%(last -first +1))] = temp; 
+		Random rand = new Random();
+		int pivot = array[first + rand.nextInt(last - first)];
+		while (true) {
+			while (array[first] < pivot)
+				first++;
+
+			while (array[last] > pivot)
+				last--;
+
+			if (first < last) {
+				int temp = array[last];
+				array[last] = array[first];
+				array[first] = temp;
+			} else {
+				return last;
+			}
 		}
-		return partition(first, last);
-		
+
 	}
 }

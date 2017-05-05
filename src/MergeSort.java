@@ -6,7 +6,7 @@ public class MergeSort {
 		super();
 		this.array = array;
 	}
-	
+
 	public int[] mergeSort(){
 		sortArray(0, array.length-1);
 		return array;
