@@ -1,7 +1,7 @@
 
 public class InsertionSort {
 	int[]array ; 
-	
+
 	public InsertionSort(int[] array) {
 		super();
 		this.array = array;
@@ -18,8 +18,8 @@ public class InsertionSort {
 			array[j+1]=insertVal; 
 		}
 		return array; 
-		
+
 	}
-	
+
 
 }

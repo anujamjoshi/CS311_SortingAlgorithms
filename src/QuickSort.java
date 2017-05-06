@@ -22,11 +22,9 @@ public class QuickSort {
 		return quickSort2(0, array.length-1);
 	}
 	private int[]quickSort2(int p, int q){
-		/*
-		 * note I had to add one because the size of the array is q + 1 because 
-		 */
+
 		if (array.length<=16){
-			//	System.out.println("IS");
+
 			InsertionSort is = new InsertionSort(array);
 			array = is.insertionSort();
 		}
@@ -68,7 +66,7 @@ public class QuickSort {
 			while(ts > first && array[ts] >pivot){
 				ts--;
 			}
-			//System.out.println("TB" + tb  + "TS" + ts) ;
+
 			if (tb<ts){
 				int temp = array[tb];
 				array[tb]=array[ts];

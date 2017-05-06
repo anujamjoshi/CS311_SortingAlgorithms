@@ -1,7 +1,7 @@
 
 public class MergeSort {
 	int[]array ; 
-	
+
 	public MergeSort(int[] array) {
 		super();
 		this.array = array;
@@ -17,7 +17,7 @@ public class MergeSort {
 			sortArray(low, mid);
 			sortArray( mid+1, high);
 			sort(low, mid, high);
-			
+
 		}
 	}
 	private void sort(int low, int mid, int high) {
@@ -51,6 +51,6 @@ public class MergeSort {
 		for (int index = low; index <=high; index++) {
 			array[index] = U[index];
 		}
-		
+
 	}
 }
